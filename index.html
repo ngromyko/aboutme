@@ -107,6 +107,7 @@
 
       .section {
         margin-bottom: 35px;
+        page-break-inside: avoid;
       }
 
       .section-title {
@@ -117,6 +118,7 @@
         padding-bottom: 8px;
         border-bottom: 2px solid #e5e7eb;
         position: relative;
+        page-break-after: avoid;
       }
 
       .section-title::after {
@@ -134,14 +136,15 @@
         padding: 20px;
         border-left: 4px solid #3b82f6;
         border-radius: 0 8px 8px 0;
-        /* font-style: italic; */
         color: #000000;
+        page-break-inside: avoid;
       }
 
       .job {
         margin-bottom: 25px;
         padding-bottom: 25px;
         border-bottom: 1px solid #e5e7eb;
+        page-break-inside: avoid;
       }
 
       .job:last-child {
@@ -256,6 +259,10 @@
         gap: 30px;
       }
 
+      .skill-category {
+        page-break-inside: avoid;
+      }
+
       .skill-category h4 {
         font-size: 16px;
         font-weight: 600;
@@ -285,6 +292,7 @@
 
       .language {
         text-align: center;
+        page-break-inside: avoid;
       }
 
       .language h4 {
