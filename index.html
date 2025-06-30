@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Nikita Hramyka - Software Engineer</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
@@ -21,7 +22,7 @@
       }
 
       .container {
-        /* max-width: 210mm; */
+        max-width: 210mm;
         margin: 0 auto;
         background: white;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -107,6 +108,8 @@
 
       .section {
         margin-bottom: 35px;
+
+        page-break-inside: avoid;
       }
 
       .section-title {
@@ -141,6 +144,7 @@
         margin-bottom: 25px;
         padding-bottom: 25px;
         border-bottom: 1px solid #e5e7eb;
+        page-break-inside: avoid;
       }
 
       .job:last-child {
@@ -187,6 +191,8 @@
         color: #4b5563;
         margin-bottom: 15px;
         text-align: justify;
+
+        /* page-break-inside: avoid; */
       }
 
       .responsibilities {
@@ -304,22 +310,41 @@
         border-radius: 4px;
       }
 
+      /* Добавляем разрыв перед элементом */
+      .pb-before {
+        page-break-before: always;
+      }
+
+      /* Добавляем разрыв после элемента */
+      .pb-after {
+        page-break-after: always;
+      }
+
+      /* Предотвращаем разрыв внутри элемента */
+      .pb-inside {
+        page-break-inside: avoid;
+      }
+
+      /* @page {
+        size: A4;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      } */
+
       @media print {
-        body {
+        /* body {
           background: white;
-        }
+        } */
 
         .container {
           box-shadow: none;
           margin: 0;
           padding: 0;
         }
-        .section {
-          page-break-before: always;
-        }
-        .section {
-          page-break-before: always;
-        }
+
+        /* .job {
+          margin: 0;
+        } */
       }
 
       /* @media (max-width: 768px) {
@@ -373,6 +398,10 @@
           <div class="contact-item">
             <span>📱</span>
             <span>+48571942426</span>
+          </div>
+          <div class="contact-item">
+            <span>✈️</span>
+            <span>@n_hramyka</span>
           </div>
         </div>
         <button id="download-pdf" class="download-btn">Download as PDF</button>
