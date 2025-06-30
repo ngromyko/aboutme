@@ -21,7 +21,7 @@
       }
 
       .container {
-        max-width: 210mm;
+        /* max-width: 210mm; */
         margin: 0 auto;
         background: white;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -32,7 +32,6 @@
         background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         color: white;
         padding: 40px;
-        page-break-inside: avoid;
       }
 
       .header-main {
@@ -40,7 +39,6 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
-        page-break-inside: avoid;
       }
 
       .header-text {
@@ -75,7 +73,6 @@
         justify-content: center;
         gap: 30px;
         flex-wrap: wrap;
-        page-break-inside: avoid;
       }
 
       .contact-item {
@@ -106,12 +103,10 @@
 
       .main-content {
         padding: 40px;
-        page-break-inside: avoid;
       }
 
       .section {
         margin-bottom: 35px;
-        page-break-inside: avoid;
       }
 
       .section-title {
@@ -122,7 +117,6 @@
         padding-bottom: 8px;
         border-bottom: 2px solid #e5e7eb;
         position: relative;
-        page-break-after: avoid;
       }
 
       .section-title::after {
@@ -141,14 +135,12 @@
         border-left: 4px solid #3b82f6;
         border-radius: 0 8px 8px 0;
         color: #000000;
-        page-break-inside: avoid;
       }
 
       .job {
         margin-bottom: 25px;
         padding-bottom: 25px;
         border-bottom: 1px solid #e5e7eb;
-        page-break-inside: avoid;
       }
 
       .job:last-child {
@@ -206,7 +198,6 @@
         font-weight: 600;
         color: #374151;
         margin-bottom: 8px;
-        page-break-after: avoid;
       }
 
       .responsibilities ul {
@@ -240,7 +231,6 @@
         font-weight: 600;
         color: #374151;
         margin-bottom: 8px;
-        page-break-after: avoid;
       }
 
       .tech-list {
@@ -266,7 +256,6 @@
       }
 
       .skill-category {
-        page-break-inside: avoid;
       }
 
       .skill-category h4 {
@@ -274,7 +263,6 @@
         font-weight: 600;
         color: #1f2937;
         margin-bottom: 10px;
-        page-break-after: avoid;
       }
 
       .skill-list {
@@ -299,7 +287,6 @@
 
       .language {
         text-align: center;
-        page-break-inside: avoid;
       }
 
       .language h4 {
@@ -307,7 +294,6 @@
         font-weight: 600;
         color: #1f2937;
         margin-bottom: 4px;
-        page-break-after: avoid;
       }
 
       .language-level {
@@ -318,36 +304,19 @@
         border-radius: 4px;
       }
 
-      .new-job {
-        background: #fef7f0;
-        border-left: 4px solid #ea580c;
-        padding: 20px;
-        border-radius: 0 8px 8px 0;
-        margin-bottom: 25px;
-      }
-
       @media print {
         body {
           background: white;
         }
+
         .container {
           box-shadow: none;
           margin: 0;
-        }
-        .section {
-          page-break-inside: avoid;
-          page-break-before: avoid; /* Avoid breaking before a section */
-          margin-top: 20px; /* Add margin-top for sections on new pages */
-        }
-
-        .job {
-          page-break-inside: avoid;
-          page-break-before: avoid; /* Avoid breaking before a job */
-          margin-top: 15px; /* Add margin-top for jobs on new pages */
+          padding: 0;
         }
       }
 
-      @media (max-width: 768px) {
+      /* @media (max-width: 768px) {
         .container {
           margin: 10px;
         }
@@ -369,7 +338,7 @@
           text-align: left;
           margin-top: 10px;
         }
-      }
+      } */
     </style>
   </head>
   <body>
@@ -398,10 +367,6 @@
           <div class="contact-item">
             <span>📱</span>
             <span>+48571942426</span>
-          </div>
-          <div class="contact-item">
-            <span>🎂</span>
-            <span>Apr 14, 1999</span>
           </div>
         </div>
         <button id="download-pdf" class="download-btn">Download as PDF</button>
@@ -450,7 +415,7 @@
               </div>
               <div class="job-meta">
                 <div class="job-date">Jan 2024 - Jun 2025</div>
-                <div class="job-type">Full-time • Remote • 1 yr 6 mos</div>
+                <div class="job-type">Full-time • Remote</div>
               </div>
             </div>
 
@@ -753,23 +718,29 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-      document.getElementById('download-pdf').addEventListener('click', function() {
-        const downloadBtn = document.getElementById('download-pdf');
-        downloadBtn.style.display = 'none';
+      document
+        .getElementById("download-pdf")
+        .addEventListener("click", function () {
+          const downloadBtn = document.getElementById("download-pdf");
+          downloadBtn.style.display = "none";
 
-        const element = document.querySelector('.container');
-        const opt = {
-          margin:       10, /* Add 10mm margin on all sides */
-          filename:     'Nikita_Hramyka_Resume.pdf',
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true },
-          jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
+          const element = document.querySelector(".container");
+          const opt = {
+            margin: 0 /* Add 10mm margin on all sides */,
+            filename: "СV_Nikita_Hramyka.pdf",
+            image: { type: "jpeg", quality: 1 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          };
 
-        html2pdf().set(opt).from(element).save().then(function() {
-          downloadBtn.style.display = 'block';
+          html2pdf()
+            .set(opt)
+            .from(element)
+            .save()
+            .then(function () {
+              downloadBtn.style.display = "block";
+            });
         });
-      });
     </script>
   </body>
 </html>
