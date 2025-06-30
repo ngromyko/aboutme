@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Nikita Hramyka - Software Engineer</title>
+    <style>
+      .return-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: #fff;
+        color: #1e3a8a;
+        border: 1px solid #1e3a8a;
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .return-button:hover {
+        background-color: #1e3a8a;
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8fafc;
+        font-size: 14px;
+      }
+
+      .container {
+        max-width: 210mm;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        min-height: 297mm;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        color: white;
+        padding: 40px;
+      }
+
+      .header-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .header-text {
+        text-align: right;
+      }
+
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+      }
+
+      .header h1 {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.025em;
+      }
+
+      .header h2 {
+        font-size: 18px;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      .download-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        color: #1e3a8a;
+        border: 1px solid #1e3a8a;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .download-btn:hover {
+        background-color: #1e3a8a;
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .main-content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 35px;
+
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e5e7eb;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: #3b82f6;
+      }
+
+      .summary {
+        background: #f8fafc;
+        padding: 20px;
+        border-left: 4px solid #3b82f6;
+        border-radius: 0 8px 8px 0;
+        color: #000000;
+      }
+
+      .job {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #e5e7eb;
+        page-break-inside: avoid;
+      }
+
+      .job:last-child {
+        border-bottom: none;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+
+      .job-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+      }
+
+      .company {
+        font-size: 14px;
+        color: #3b82f6;
+        font-weight: 500;
+      }
+
+      .job-meta {
+        text-align: right;
+        font-size: 12px;
+        color: #6b7280;
+      }
+
+      .job-date {
+        font-weight: 500;
+        color: #374151;
+      }
+
+      .job-type {
+        margin-top: 2px;
+      }
+
+      .job-description {
+        color: #4b5563;
+        margin-bottom: 15px;
+        text-align: justify;
+
+        /* page-break-inside: avoid; */
+      }
+
+      .responsibilities {
+        margin-bottom: 15px;
+      }
+
+      .responsibilities h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 8px;
+      }
+
+      .responsibilities ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .responsibilities li {
+        margin: 4px 0;
+        padding-left: 20px;
+        position: relative;
+        color: #4b5563;
+        font-size: 13px;
+      }
+
+      .responsibilities li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #3b82f6;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .technologies {
+        margin-top: 15px;
+      }
+
+      .technologies h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 8px;
+      }
+
+      .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tech-item {
+        background: #eff6ff;
+        color: #1e40af;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        border: 1px solid #dbeafe;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category {
+      }
+
+      .skill-category h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 10px;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-item {
+        background: #f3f4f6;
+        color: #374151;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .languages {
+        display: flex;
+        gap: 30px;
+      }
+
+      .language {
+        text-align: center;
+      }
+
+      .language h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 4px;
+      }
+
+      .language-level {
+        font-size: 12px;
+        color: #6b7280;
+        background: #f3f4f6;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+
+      /* Добавляем разрыв перед элементом */
+      .pb-before {
+        page-break-before: always;
+      }
+
+      /* Добавляем разрыв после элемента */
+      .pb-after {
+        page-break-after: always;
+      }
+
+      /* Предотвращаем разрыв внутри элемента */
+      .pb-inside {
+        page-break-inside: avoid;
+      }
+
+      /* @page {
+        size: A4;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      } */
+
+      @media print {
+        /* body {
+          background: white;
+        } */
+
+        .container {
+          box-shadow: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* .job {
+          margin: 0;
+        } */
+      }
+
+      /* @media (max-width: 768px) {
+        .container {
+          margin: 10px;
+        }
+        .header {
+          padding: 20px;
+        }
+        .main-content {
+          padding: 20px;
+        }
+        .contact-info {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .job-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .job-meta {
+          text-align: left;
+          margin-top: 10px;
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="return-button">← Return to Main Page</a>
+    <div class="container">
+      <div class="header">
+        <div class="header-main">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4D03AQHspu6djzJXGQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680029102229?e=1756944000&v=beta&t=id2FCe1dUMp3mj87U6AKiymU4xxq0_l6hiC0YwjN8iA"
+            alt="Nikita Hramyka"
+            class="profile-picture"
+          />
+          <div class="header-text">
+            <h1>NIKITA HRAMYKA</h1>
+            <h2>Software Engineer</h2>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <span>n.gromyko99@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span>📍</span>
+            <span>Poland, Krakow</span>
+          </div>
+          <div class="contact-item">
+            <span>📱</span>
+            <span>+48571942426</span>
+          </div>
+          <div class="contact-item">
+            <span>Telegram:</span>
+            <span>@n_hramyka</span>
+          </div>
+        </div>
+        <button id="download-pdf" class="download-btn">Download as PDF</button>
+      </div>
+      <div class="main-content">
+        <div class="section">
+          <div class="summary">
+            Full-Stack Developer with 6+ years of professional experience.
+            Focused on building reliable software solutions using .NET framework
+            and related technologies.
+
+            <ul style="margin-left: 20px; margin-top: 5px">
+              <li>
+                Proposing technical solutions for requested functionalities,
+                estimating time required for implementation
+              </li>
+              <li>Project development</li>
+              <li>Relational database design</li>
+              <li>Project functionality implementation</li>
+              <li>Project planning, status and reporting</li>
+              <li>
+                Communicating with a customer: requirements clarification,
+                analyzing, demonstrations
+              </li>
+              <li>
+                Deploying the system to production environment and providing
+                post-production support
+              </li>
+              <li>Interviewed candidates for a company specializing in .NET</li>
+              <li>Front-End Development</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">EXPERIENCE</h2>
+
+          <!-- NEW JOB -->
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">
+                  Full Stack Developer - Marine Software
+                </div>
+                <div class="company">UNL Solutions LTD</div>
+              </div>
+              <div class="job-meta">
+                <div class="job-date">Jan 2024 - Jun 2025</div>
+                <div class="job-type">Remote</div>
+              </div>
+            </div>
+
+            <div class="job-description">
+              Developing maritime technology solutions for commercial shipping
+              industry. Developed vessel performance management systems,
+              environmental compliance platforms, and smart shipping
+              digitalization tools for global maritime clients.
+            </div>
+
+            <div class="technologies">
+              <h4>Technologies & Skills:</h4>
+              <div class="tech-list">
+                <span class="tech-item">.NET Framework</span>
+                <span class="tech-item">.NET Core</span>
+                <span class="tech-item">C#</span>
+                <span class="tech-item">Entity Framework</span>
+                <span class="tech-item">Angular</span>
+                <span class="tech-item">Blazor</span>
+                <span class="tech-item">TypeScript</span>
+                <span class="tech-item">Azure</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">Kubernetes</span>
+                <span class="tech-item">SQL Server</span>
+                <span class="tech-item">RESTful APIs</span>
+                <span class="tech-item">Microservices</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXISTING JOBS -->
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">
+                  Full Stack Developer - CRM Leads Platform
+                </div>
+                <div class="company">Freelance</div>
+              </div>
+              <div class="job-meta">
+                <div class="job-date">Apr 2023 - Present</div>
+                <div class="job-type">Contract</div>
+              </div>
+            </div>
+
+            <div class="job-description">
+              Responsible for developing and maintaining a CRM platform designed
+              to handle the collection, analysis, and statistics of leads from
+              advertising campaigns on Facebook and Google.
+            </div>
+
+            <div class="technologies">
+              <h4>Skills:</h4>
+              <div class="tech-list">
+                <span class="tech-item">Entity Framework Core</span>
+                <span class="tech-item">.NET Core</span>
+                <span class="tech-item">RabbitMQ</span>
+                <span class="tech-item">Microsoft Azure</span>
+                <span class="tech-item">Vue.js</span>
+                <span class="tech-item">ChatGPT</span>
+                <span class="tech-item">SQL Server</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">.NET Developer</div>
+                <div class="company">Andersen</div>
+              </div>
+              <div class="job-meta">
+                <div class="job-date">Nov 2021 - Jan 2022</div>
+                <div class="job-type"></div>
+              </div>
+            </div>
+
+            <div class="job-description">
+              Private Swiss company that deals with investments in other
+              companies. The project consists of two websites: one for the
+              internal use of employees, and the second for third-party
+              companies in which invest. In addition, there is a functionality
+              for monitoring companies, creating and processing
+              inquiries/questions from these companies.
+            </div>
+
+            <div class="responsibilities">
+              <h4>Responsibilities & achievements:</h4>
+              <ul>
+                <li>Design of the solution architecture</li>
+                <li>Refactor legacy code</li>
+                <li>Implementing new functionality</li>
+                <li>Implementing Unit tests (80% coverage)</li>
+                <li>Development of user interfaces</li>
+                <li>Code reviews and task estimations</li>
+              </ul>
+            </div>
+
+            <div class="technologies">
+              <h4>Technologies:</h4>
+              <div class="tech-list">
+                <span class="tech-item">.NET Core</span>
+                <span class="tech-item">.NET MVC</span>
+                <span class="tech-item">EF Core</span>
+                <span class="tech-item">MSSQL</span>
+                <span class="tech-item">Azure</span>
+                <span class="tech-item">Microservices</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">Bootstrap</span>
+                <span class="tech-item">Moq</span>
+                <span class="tech-item">XUnit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Full Stack Developer</div>
+                <div class="company">Epam</div>
+              </div>
+              <div class="job-meta">
+                <div class="job-date">Sep 2020 - Nov 2021</div>
+                <div class="job-type"></div>
+              </div>
+            </div>
+
+            <div class="job-description">
+              Online legal know-how service. It provides rigorous peer reviewed
+              resources, such as practice notes, current awareness and standard
+              documents to help you work smarter and advise with confidence.
+            </div>
+
+            <div class="responsibilities">
+              <h4>Responsibilities:</h4>
+              <ul>
+                <li>Javascript platform-based functionality extension</li>
+                <li>ASP.NET MVC product view functionality development</li>
+                <li>Projects with Agile and DSDM lifecycles</li>
+                <li>Customer team communication at daily stand ups</li>
+                <li>Testing service integration with Fiddler</li>
+              </ul>
+            </div>
+
+            <div class="technologies">
+              <h4>Technologies:</h4>
+              <div class="tech-list">
+                <span class="tech-item">ASP.NET MVC 4</span>
+                <span class="tech-item">ReactJS</span>
+                <span class="tech-item">jQuery</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">HTML/CSS</span>
+                <span class="tech-item">WebAPI</span>
+                <span class="tech-item">JSON/XML</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Full Stack Developer</div>
+                <div class="company">Itransition</div>
+              </div>
+              <div class="job-meta">
+                <div class="job-date">Sep 2019 - Apr 2020</div>
+                <div class="job-type"></div>
+              </div>
+            </div>
+
+            <div class="job-description">
+              Training Portal dedicated for trainers and end users to define
+              training programs, fulfill questionnaires, schedule training and
+              events, select coaches, share documents. Portal is closely
+              integrated with several 3rd party systems: Sage CRM, Box.com, MS
+              Outlook, Google Calendar and iCal.
+            </div>
+
+            <div class="responsibilities">
+              <h4>Responsibilities:</h4>
+              <ul>
+                <li>Full-stack development</li>
+                <li>Research and integration of new tools/frameworks</li>
+                <li>Migration to new technologies, code refactoring</li>
+                <li>Stabilization and production support</li>
+              </ul>
+            </div>
+
+            <div class="technologies">
+              <h4>Technologies:</h4>
+              <div class="tech-list">
+                <span class="tech-item">.NET</span>
+                <span class="tech-item">ASP.NET MVC</span>
+                <span class="tech-item">SQL Server</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">jQuery</span>
+                <span class="tech-item">AngularJS</span>
+                <span class="tech-item">AutoMapper</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Full Stack Developer</div>
+                <div class="company">Itransition - Scoring Analytics</div>
+              </div>
+              <div class="job-meta">
+                <div class="job-date">Sep 2019 - Nov 2019</div>
+                <div class="job-type"></div>
+              </div>
+            </div>
+
+            <div class="job-description">
+              Web-based predictive underwriting system designed to assist
+              customers with the underwriting and analysis challenges of the
+              buy-here pay-here industry. The web application provides a
+              score-based survey that allows car dealers to find out the
+              reliability score of customers applying for auto loans.
+            </div>
+
+            <div class="technologies">
+              <h4>Technologies:</h4>
+              <div class="tech-list">
+                <span class="tech-item">.NET</span>
+                <span class="tech-item">ASP.NET Web API</span>
+                <span class="tech-item">EF 6</span>
+                <span class="tech-item">Angular 8</span>
+                <span class="tech-item">OAuth 2</span>
+                <span class="tech-item">AMCharts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">SKILLS</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h4>Backend Development</h4>
+              <div class="skill-list">
+                <span class="skill-item">.NET Framework</span>
+                <span class="skill-item">.NET Core</span>
+                <span class="skill-item">C#</span>
+                <span class="skill-item">ASP.NET MVC</span>
+                <span class="skill-item">ASP.NET WebAPI</span>
+                <span class="skill-item">Entity Framework</span>
+                <span class="skill-item">Microservices</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>Frontend Development</h4>
+              <div class="skill-list">
+                <span class="skill-item">JavaScript</span>
+                <span class="skill-item">TypeScript</span>
+                <span class="skill-item">Angular</span>
+                <span class="skill-item">Blazor</span>
+                <span class="skill-item">ReactJS</span>
+                <span class="skill-item">Vue.js</span>
+                <span class="skill-item">HTML5/CSS3</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>Cloud & DevOps</h4>
+              <div class="skill-list">
+                <span class="skill-item">Microsoft Azure</span>
+                <span class="skill-item">Docker</span>
+                <span class="skill-item">Kubernetes</span>
+                <span class="skill-item">RabbitMQ</span>
+                <span class="skill-item">SQL Server</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>Project Management</h4>
+              <div class="skill-list">
+                <span class="skill-item">Agile/SCRUM</span>
+                <span class="skill-item">Code Reviews</span>
+                <span class="skill-item">Task Estimation</span>
+                <span class="skill-item">Team Leadership</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">LANGUAGES</h2>
+          <div class="languages">
+            <div class="language">
+              <h4>Russian</h4>
+              <div class="language-level">Native</div>
+            </div>
+            <div class="language">
+              <h4>English</h4>
+              <div class="language-level">Upper Intermediate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      document
+        .getElementById("download-pdf")
+        .addEventListener("click", function () {
+          const downloadBtn = document.getElementById("download-pdf");
+          downloadBtn.style.display = "none";
+
+          const element = document.querySelector(".container");
+          const opt = {
+            margin: 0 /* Add 10mm margin on all sides */,
+            filename: "СV_Nikita_Hramyka.pdf",
+            image: { type: "jpeg", quality: 1 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          };
+
+          html2pdf()
+            .set(opt)
+            .from(element)
+            .save()
+            .then(function () {
+              downloadBtn.style.display = "block";
+            });
+        });
+    </script>
+  </body>
+</html>
