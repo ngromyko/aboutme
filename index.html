@@ -336,11 +336,13 @@
         }
         .section {
           page-break-inside: avoid;
+          page-break-before: avoid; /* Avoid breaking before a section */
           margin-top: 20px; /* Add margin-top for sections on new pages */
         }
 
         .job {
           page-break-inside: avoid;
+          page-break-before: avoid; /* Avoid breaking before a job */
           margin-top: 15px; /* Add margin-top for jobs on new pages */
         }
       }
@@ -757,7 +759,7 @@
 
         const element = document.querySelector('.container');
         const opt = {
-          margin:       0,
+          margin:       10, /* Add 10mm margin on all sides */
           filename:     'Nikita_Hramyka_Resume.pdf',
           image:        { type: 'jpeg', quality: 0.98 },
           html2canvas:  { scale: 2, useCORS: true },
