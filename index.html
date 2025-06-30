@@ -82,6 +82,25 @@
         font-size: 14px;
       }
 
+      .download-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        color: #1e3a8a;
+        border: 1px solid #1e3a8a;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .download-btn:hover {
+        background-color: #1e3a8a;
+        color: #fff;
+      }
+
       .main-content {
         padding: 40px;
       }
@@ -361,15 +380,14 @@
             <span>Apr 14, 1999</span>
           </div>
         </div>
+        <button id="download-pdf" class="download-btn">Download as PDF</button>
       </div>
       <div class="main-content">
         <div class="section">
           <div class="summary">
-            I have over 6 years of experience in Information Technologies. I
-            effectively combine solid, analytical skills, participated in all
-            phases of enterprise project lifecycle including requirements
-            development and management, ongoing builds demonstration and
-            post-live support.
+            Full-Stack Developer with 6+ years of professional experience.
+            Focused on building reliable software solutions using .NET framework
+            and related technologies.
 
             <ul style="margin-left: 20px; margin-top: 5px">
               <li>
@@ -443,7 +461,9 @@
           <div class="job">
             <div class="job-header">
               <div>
-                <div class="job-title">.NET Developer</div>
+                <div class="job-title">
+                  Full Stack Developer - CRM Leads Platform
+                </div>
                 <div class="company">Freelance</div>
               </div>
               <div class="job-meta">
@@ -701,11 +721,31 @@
             </div>
             <div class="language">
               <h4>English</h4>
-              <div class="language-level">Intermediate</div>
+              <div class="language-level">Upper Intermediate</div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      document.getElementById('download-pdf').addEventListener('click', function() {
+        const downloadBtn = document.getElementById('download-pdf');
+        downloadBtn.style.display = 'none';
+
+        const element = document.querySelector('.container');
+        const opt = {
+          margin:       0,
+          filename:     'Nikita_Hramyka_Resume.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save().then(function() {
+          downloadBtn.style.display = 'block';
+        });
+      });
+    </script>
   </body>
 </html>
