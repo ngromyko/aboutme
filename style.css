@@ -229,11 +229,12 @@ footer {
 
 @media (max-width: 768px) {
   .container {
-    padding: 30px;
+    padding: 20px; /* Reduced padding for smaller screens */
+    width: 95%; /* Use more of the screen width */
   }
 
   h1 {
-    font-size: 2.2rem;
+    font-size: 2rem; /* Slightly smaller heading */
   }
 
   .tagline {
@@ -241,15 +242,48 @@ footer {
   }
 
   .about-section {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Slightly smaller text */
   }
 
   .action-button {
     padding: 10px 20px;
     font-size: 0.9rem;
+    width: 100%; /* Make buttons full width on small screens */
+    margin-bottom: 10px; /* Add space between stacked buttons */
+  }
+
+  .button-group {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0; /* Remove gap when stacked */
+  }
+
+  .contact-info-section {
+    gap: 10px; /* Reduce gap for contact items */
+  }
+
+  .contact-item {
+    font-size: 1rem; /* Adjust contact item font size */
   }
 
   .sidebar.open {
-    width: 100%;
+    width: 100%; /* Sidebar takes full width on small screens */
+  }
+
+  .sidebar h2 {
+    font-size: 1.8rem; /* Adjust sidebar heading size */
+    padding: 0 20px; /* Adjust sidebar padding */
+  }
+
+  .project-card {
+    margin: 0 20px 20px 20px; /* Adjust project card margins */
+    padding: 20px; /* Adjust project card padding */
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem; /* Adjust project card heading size */
+  }
+
+  .project-card p {
+    font-size: 0.9rem; /* Adjust project card text size */
   }
 }
